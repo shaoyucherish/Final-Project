@@ -1,24 +1,29 @@
 library(shiny)
+library(shinydashboard)
+library(DT)
+library(ggplot2)
 
-# Define UI for application that draws a histogram
-shinyUI(fluidPage(
-
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-            plotOutput("distPlot")
-        )
+dashboardPage(
+  
+  # add title
+  dashboardHeader (title = ""),
+  
+  # define sidebar
+  dashboardSidebar(sidebarMenu(
+    menuItem("About", tabName="tab1"),
+    menuItem("Data Exploration", tabName="tab2"),
+    menuItem("Modeling", tabName="tab3"),
+    menuItem("Data", tabName="tab4")
+  )),
+  
+  # define body
+  dashboardBody(
+    tabItems(
+      # first item
+      tabItem(tabName = "item1",
+              #Describe the purpose of the app
+              h1("Purpose of the app"),
+              box(h4("The purpose of this app is to explora the data for Admission in the University and fit three supervised learning models.")))
     )
-))
+  )
+)
