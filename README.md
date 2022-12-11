@@ -5,7 +5,7 @@ Shaoyu Wang
 ## Brief description of the app 
 This R Shiny app was created as a final project for the ST 558 - Data Science for Statisticians course.
 
-## A list of packages needed to run the app
+## A list of packages
 - shiny
 - shinydashboard
 - DT
