@@ -12,12 +12,12 @@ This R Shiny app was created as a final project for the ST 558 - Data Science fo
 - tidyverse
 - ggplot2
 
-## A line of code that would install all the packages used.
+## A line of code for installing all the packages used.
 ```
 install.packages(c("shiny", "shinydashboard", "DT", "tidyverse", "ggplot2"))
 ```
 
-## The `shiny::runGitHub()` code that can run the app.
+## The `shiny::runGitHub()` code for running the app.
 ```
 shiny::runGitHub(repo = "Final-Project",username = "shaoyucherish",ref="main")
 ```
