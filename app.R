@@ -1,12 +1,11 @@
 #Required libraries
 library(shiny)
 library(shinydashboard)
+library(DT)
 library(tidyverse)
 library(ggplot2)
-library(DT)
 
 #Read in the data
-#setwd("~/Desktop/558Final")
 data <- read_csv("Breast_cancer_data.csv", show_col_types = FALSE)
 data <- data %>% rename("Radius" = "mean_radius",
                         "Texture" = "mean_texture",
