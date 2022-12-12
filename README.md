@@ -8,13 +8,16 @@ This R Shiny app was created as a final project for the ST 558 - Data Science fo
 ## A list of packages
 - shiny
 - shinydashboard
-- DT
 - tidyverse
 - ggplot2
+- DT
+- caret
+- randomForest
+- tree
 
 ## A line of code for installing all the packages used
 ```
-install.packages(c("shiny", "shinydashboard", "DT", "tidyverse", "ggplot2"))
+install.packages(c("shiny", "shinydashboard", "tidyverse", "ggplot2", "DT", "caret", "randomForest", "tree"))
 ```
 
 ## The `shiny::runGitHub()` code for running the app
