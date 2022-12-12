@@ -8,6 +8,7 @@ library(ggplot2)
 library(DT)
 library(caret)
 library(randomForest)
+library(tree)
 
 #Read in the data
 setwd("~/Desktop/558Final")
