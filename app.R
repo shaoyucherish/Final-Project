@@ -298,7 +298,7 @@ ui <- dashboardPage(skin="red",
 server <- shinyServer(function(input, output) {
   #About
   output$image <- renderImage({
-    list(src = "~/Desktop/558Final/image.png", height = 200, width = 200)
+    list(src = "www/image.png", height = 200, width = 200)
   }, deleteFile=FALSE)
   
   #Data Exploration
