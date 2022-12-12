@@ -20,7 +20,7 @@ This R Shiny app was created as a final project for the ST 558 - Data Science fo
 install.packages(c("shiny", "shinydashboard", "tidyverse", "ggplot2", "DT", "caret", "randomForest", "tree"))
 ```
 
-## The `shiny::runGitHub()` code for running the app
+## The code for running the app
 ```
 shiny::runGitHub(repo = "Final-Project",username = "shaoyucherish",ref="main")
 ```
