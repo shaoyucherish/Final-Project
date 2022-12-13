@@ -390,7 +390,7 @@ server <- shinyServer(function(input, output) {
                     preProcess = c("center", "scale"),
                     trControl = trainControl(method = "cv", number = 5))
     
-    output$rf_res <- renderPlot(varImpPlot(fit_rf$finalModel))
+    output$rf_res <- renderPlot(varImpPlot(fit_rf$finalModel, main="Variable Importance Plot"))
     output$rf_sum <- renderPrint(fit_rf)
     output$rf_acc <- renderPrint(confusionMatrix(fit_rf, newdata=test))
   })
