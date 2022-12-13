@@ -1,4 +1,4 @@
-#ST558 Final Project
+#Final Project
 #Shaoyu Wang
 
 #Required libraries
@@ -12,7 +12,6 @@ library(randomForest)
 library(tree)
 
 #Read in the data
-setwd("~/Desktop/558Final")
 data <- read_csv("Breast_cancer_data.csv", show_col_types = FALSE)
 data$diagnosis <- as.factor(data$diagnosis)
 data <- data %>% 
