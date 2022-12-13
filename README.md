@@ -15,7 +15,7 @@ This R Shiny app was created as a final project for the ST 558 - Data Science fo
 - randomForest
 - tree
 
-## A line of code for installing all the packages used
+## The code for installing all the packages used
 ```
 install.packages(c("shiny", "shinydashboard", "tidyverse", "ggplot2", "DT", "caret", "randomForest", "tree"))
 ```
