@@ -232,23 +232,23 @@ ui <- dashboardPage(skin="red",
                                            fluidRow(
                                              column(width = 3,
                                                     box(width = 12, background = "red",
-                                                        numericInput(inputId = "radius", 
+                                                        numericInput(inputId = "Radius_val", 
                                                                      label = "Radius",
                                                                      value = 10, 
                                                                      min = 0, max = 30, step=0.01),
-                                                        numericInput(inputId = "texture", 
+                                                        numericInput(inputId = "Texture_val", 
                                                                      label = "Texture",
                                                                      value = 20, 
                                                                      min = 0, max = 40, step=0.01),
-                                                        numericInput(inputId = "perimeter", 
+                                                        numericInput(inputId = "Perimeter_val", 
                                                                      label = "Perimeter",
                                                                      value = 100, 
                                                                      min = 0, max = 200, step=0.01),
-                                                        numericInput(inputId = "area", 
+                                                        numericInput(inputId = "Area_val", 
                                                                      label = "Area",
                                                                      value = 800, 
                                                                      min = 0, max = 3000, step=0.01),
-                                                        numericInput(inputId = "smoothness", 
+                                                        numericInput(inputId = "Smoothness_val", 
                                                                      label = "Smoothness",
                                                                      value = 0.1, 
                                                                      min = 0, max = 0.20, step=0.01),
@@ -300,7 +300,7 @@ ui <- dashboardPage(skin="red",
 server <- shinyServer(function(input, output) {
   #About
   output$image <- renderImage({
-    list(src = "www/image.png", height = 200, width = 200)
+    list(src = "~/Desktop/558Final/image.png", height = 200, width = 200)
   }, deleteFile=FALSE)
   
   #Data Exploration
@@ -398,17 +398,17 @@ server <- shinyServer(function(input, output) {
   
   ##Prediction
   observeEvent(input$run_pred,{
-    output$pred_result <- renderText({
-      pred_df <- data.frame(Radius = input$radius,
-                            Texture = input$texture,
-                            Perimeter = input$perimeter,
-                            Area = input$area,
-                            Smoothness = input$smoothness)
-      pred_class <- tree(Diagnosis ~ ., data = data)
-      predict_result <- predict(pred_class, newdata = pred_df, type = "class")
-      result <- paste0("The prediction for diagonsis is ",predict_result)
-      result
-    })
+    
+    pred_df <- data.frame(Radius = input$Radius_val,
+                          Texture = input$Texture_val,
+                          Perimeter = input$Perimeter_val,
+                          Area = input$Area_val,
+                          Smoothness = input$Smoothness_val)
+    pred_class <- tree(Diagnosis ~ ., data = data)
+    predict_result <- predict(pred_class, newdata = pred_df, type = "class")
+    result <- paste0("The prediction for diagonsis is ",predict_result)
+    
+    output$pred_result <- renderText(result)
   })
   
   #Data
