@@ -1,3 +1,4 @@
+#ST558 Final Project
 #Shaoyu Wang
 
 #Required libraries
@@ -155,7 +156,7 @@ ui <- dashboardPage(skin="red",
                                                  h4("Classfication tree analysis is when the response is the class (discrete), and the goal is to classify (predict) group membership. For a given region, it usually use most prevalent class as prediction. It is simple to understand and interpret, and can handle both numerical and categorical data. It can also perform well with the large datasets. But it still has limitations. Trees can be very non-robust. A small change in the training data can result in a large change in the tree and consquently the final predictions."),
                                                  h4("For the classification tree, the Gini index or deviance is usually used as following"),
                                                  p("$$Gini: 2p(1-p)$$"),
-                                                 p("$$Deviance: -2plog-2(1-p)log(1-p)$$")
+                                                 p("$$Deviance: -2plog(p)-2(1-p)log(1-p)$$")
                                                  ),
                                              h3("Random Forest"),
                                              box(width=12, background="red",
@@ -231,23 +232,23 @@ ui <- dashboardPage(skin="red",
                                            fluidRow(
                                              column(width = 3,
                                                     box(width = 12, background = "red",
-                                                        numericInput(inputId = "Radius", 
+                                                        numericInput(inputId = "radius", 
                                                                      label = "Radius",
                                                                      value = 10, 
-                                                                     min = 0, max = 30, step=1),
-                                                        numericInput(inputId = "Texture", 
+                                                                     min = 0, max = 30, step=0.01),
+                                                        numericInput(inputId = "texture", 
                                                                      label = "Texture",
                                                                      value = 20, 
-                                                                     min = 0, max = 40, step=1),
-                                                        numericInput(inputId = "Perimeter", 
+                                                                     min = 0, max = 40, step=0.01),
+                                                        numericInput(inputId = "perimeter", 
                                                                      label = "Perimeter",
                                                                      value = 100, 
-                                                                     min = 0, max = 200, step=1),
-                                                        numericInput(inputId = "Area", 
+                                                                     min = 0, max = 200, step=0.01),
+                                                        numericInput(inputId = "area", 
                                                                      label = "Area",
                                                                      value = 800, 
-                                                                     min = 0, max = 3000, step=1),
-                                                        numericInput(inputId = "Smoothness", 
+                                                                     min = 0, max = 3000, step=0.01),
+                                                        numericInput(inputId = "smoothness", 
                                                                      label = "Smoothness",
                                                                      value = 0.1, 
                                                                      min = 0, max = 0.20, step=0.01),
@@ -398,13 +399,13 @@ server <- shinyServer(function(input, output) {
   ##Prediction
   observeEvent(input$run_pred,{
     output$pred_result <- renderText({
-      pred_df <- data.frame(Radius = input$Radius,
-                            Texture = input$Texture,
-                            Perimeter = input$Perimeter,
-                            Area = input$Area,
-                            Smoothness = input$Smoothness)
+      pred_df <- data.frame(Radius = input$radius,
+                            Texture = input$texture,
+                            Perimeter = input$perimeter,
+                            Area = input$area,
+                            Smoothness = input$smoothness)
       pred_class <- tree(Diagnosis ~ ., data = data)
-      predict_result <- predict(pred_class, newdata = pred_df, type="class")
+      predict_result <- predict(pred_class, newdata = pred_df, type = "class")
       result <- paste0("The prediction for diagonsis is ",predict_result)
       result
     })
