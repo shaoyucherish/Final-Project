@@ -405,7 +405,7 @@ server <- shinyServer(function(input, output) {
                           Smoothness = input$Smoothness_val)
     pred_class <- tree(Diagnosis ~ ., data = data)
     predict_result <- predict(pred_class, newdata = pred_df, type = "class")
-    result <- paste0("The prediction for diagonsis is ",predict_result)
+    result <- paste0("The prediction for diagnosis is ",predict_result)
     
     output$pred_result <- renderText(result)
   })
